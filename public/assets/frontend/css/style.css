@@ -1,0 +1,108 @@
+@import url(//fonts.googleapis.com/css?family=Lato:300:400);
+@import url('https://fonts.googleapis.com/css?family=Lalezar&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Akronim|Anton|Indie+Flower|Merriweather|Modak');
+
+#nav-bar .navbar{
+  background: linear-gradient(to right top, #00112a, #0a0f2a, #130c29, #1b0826, #210523);
+}
+#nav-bar .navbar .navbar-brand{
+  color: #fff;
+  padding-left: 16px;
+}
+#nav-bar .navbar-brand{
+  font-family: 'Akronim';
+  font-weight: 600;
+  font-size: 45px;
+}
+.navbar ul li a{
+  font-size: 18px;
+  color: white! important;
+  font-weight: bold;
+}
+.navbar ul li a:hover{
+  color: grey! important;
+}
+.navbar ul li {
+  padding: 0px 10px;
+}
+#nav-bar .btn-info{
+  background: gold;
+  color:black;
+  border: none;
+}
+#nav-bar .btn-info:hover{
+  background: white;
+  color:#000;
+}
+/*****************************************************/
+/**********************Cover*******************************/
+#cover{
+    margin-top:80px;
+    background-image: url('https://www.gloriafood.com/wp-content/uploads/2018/06/pizza-cropped-photo-1024x429.jpg');
+    background-attachment: fixed;
+    background-size:cover;
+    padding: 160px 30px;
+}
+#cover .card{
+    background-color: black;
+    text-align: justify;
+    color: whitesmoke;
+    padding: 20px;
+}
+
+
+
+/*****************************************************/
+#recipe .upper-title{
+    font-family: 'Lalezar', cursive;
+    margin: 0px;
+     padding:  120px 0px 50px 0px;
+     font-weight: 700;
+   }
+   #recipe .col-md-4 .card .title{
+     font-weight: 600;
+     font-family: 'Abril Fatface', cursive;
+     padding-bottom: 7px;
+   }
+   #recipe .col-md-4 .card .pera{
+     font-weight: 500;
+     color: grey;
+   }
+   #recipe .card-title{
+       font-size: 18px;
+   }
+   .#recipe .col-md-4 .card{
+     
+   }
+
+/*****************************************************/
+
+
+
+/* footer */
+#footer{
+    margin-top: 80px;
+    padding-top: 75px; 
+    background: linear-gradient(to right top, #09030f, #0c0613, #0e0a17, #0f0d1b, #10101e)!important;
+}
+#footer .head{
+    padding-bottom: 20px;
+    color: #fff;
+    font-weight: 600;
+    font-family: 'Lalezar', cursive;
+}
+#footer p{
+    color: #fff;
+    text-align: justify;
+    padding-right: 45px;
+}
+  
+#footer .fab{
+      padding: 5px;
+      font-size: 40px;
+      margin: 20px;
+}
+#footer .fab:hover{
+  color: grey;
+}
+  
