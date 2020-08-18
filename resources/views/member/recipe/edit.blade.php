@@ -36,6 +36,16 @@
                     <div class="form-group">
                         <input class="form-control" type="file" name="image" placeholder="select an image">
                     </div>
+
+                    <div class="form-group">
+                        <select name="categories" id="category" class="form-control">
+                            <option class="text-center" value="" >Select a category</option>
+                            @foreach ($categories as $category)
+                                <option class="text-center" {{ $recipe->category_id == $category->id ? 'selected' : '' }} 
+                                 value="{{ $category->id }}" >{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
             
                     @if ($errors->any())
                         <div class="alert alert-danger">
@@ -46,7 +56,7 @@
                             </ul>
                         </div>
                     @endif
-                    <button type="submit" class="btn btn-success">Create</button>
+                    <button type="submit" class="btn btn-success">Update</button>
                     <a href="{{ route('member.recipe.index') }}" class="btn btn-danger">Back</a>
                 </form>
             </div>

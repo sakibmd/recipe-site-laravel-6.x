@@ -31,6 +31,7 @@
       <tr>
         <th scope="col">Id</th>
         <th scope="col">Category Name</th>
+        <th scope="col">Total Post</th>
         <th scope="col">Created At</th>
         <th scope="col">Edit</th>
         <th scope="col">Delete</th>
@@ -41,6 +42,7 @@
             <tr>
                 <td>{{ $key+1 }}</td>
                 <td>{{ $category->name }}</td>
+                <td>{{ $category->recipes->count() }}</td>
                 <td>{{ $category->created_at->diffForHumans() }}</td>
             
             

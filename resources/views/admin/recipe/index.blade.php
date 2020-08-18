@@ -32,6 +32,7 @@
         <th scope="col">Id</th>
         <th scope="col">Title</th>
         <th scope="col">Body</th>
+        <th scope="col">Category</th>
         <th scope="col">Image</th>
         <th scope="col">Created At</th>
         <th scope="col">Show</th>
@@ -45,7 +46,7 @@
                 <td>{{ $key+1 }}</td>
                 <td>{{  str_limit($recipe->title, 15)}}</td>
                 <td>{{ str_limit($recipe->body, 20) }}</td>
-
+                <td>{{ $recipe->category->name }}</td>
                 <td><img style="height: 80px; width: 138px" src="{{ asset('storage/recipe/'. $recipe->image) }}" alt="image"></td>
 
 

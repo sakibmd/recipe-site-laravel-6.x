@@ -10,7 +10,7 @@ class Recipe extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function categories(){
-        return $this->belongsToMany('App\Category')->withTimestamps();
+    public function category(){
+        return $this->belongsTo('App\Category');
     }
 }

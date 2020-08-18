@@ -82,7 +82,6 @@ class RecipeController extends Controller
             $recipe->user_id = Auth::id();
             $recipe->category_id = $request->categories;
             $recipe->save();
-            $recipe->categories()->attach($request->categories);
             return redirect(route('admin.recipe.index'))->with('success', 'Recipe Inserted Successfully');
     }
 
@@ -121,6 +120,7 @@ class RecipeController extends Controller
         $this->validate($request,[
             'title' => 'required',
             'body' => 'required',
+            'category_id' => 'required',
            ]);
 
            $image = $request->file('image');

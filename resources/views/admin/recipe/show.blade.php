@@ -18,6 +18,9 @@
             <h6> <strong>Recipe Name: {{ $recipe->title }}</strong></h6>
         </div>
         <div class="row">
+            <h6><strong>Category: {{ $recipe->category->name }}</strong></h6>
+        </div>
+        <div class="row">
             <img style="height: 400px;width:640px;border:5px solid rgb(81, 192, 159);border-radius: 20px;" src="{{ asset('storage/recipe/'.$recipe->image) }}" 
             alt="image" class="img-responsive thumbnail">
         </div>
