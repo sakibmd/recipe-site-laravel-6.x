@@ -121,7 +121,6 @@ class RecipeController extends Controller
         $this->validate($request,[
             'title' => ['required'],
             'body' => ['required'],
-            'image' => ['required'],
            ]);
 
             // Get Form Image

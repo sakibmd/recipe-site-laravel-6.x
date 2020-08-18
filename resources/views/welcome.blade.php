@@ -4,18 +4,7 @@
     
 
 <style>
-  .card:hover{
-     background-color: rgb(209, 209, 209);
-  }
-
-  .see-more{
-      text-decoration: none;
-  }
-
-  .see-more:hover{
-      background-color: rgb(74, 139, 165);
-      text-decoration: none;
-  }
+  
 
 </style>
     
@@ -74,7 +63,7 @@
                   </div>
                   @endforeach
 
-                  <a href="{{ route('recipe.allRecipe') }}" class="m-auto see-more" style="background: rgb(72, 74, 138); color:whitesmoke; padding:13px;">See More</a>
+                  <a href="{{ route('recipe.allRecipe') }}" class="btn btn-default m-auto see-more">See More</a>
                </div>
            </div>
        </section>

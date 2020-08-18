@@ -121,7 +121,6 @@ class RecipeController extends Controller
         $this->validate($request,[
             'title' => 'required',
             'body' => 'required',
-            'image' => 'required|mimes:jpeg,png,jpg',
            ]);
 
            $image = $request->file('image');
@@ -153,7 +152,7 @@ class RecipeController extends Controller
         $currentDate = Carbon::now()->toDateString();
         $imageName = $slug.'-'.$currentDate.'-'.uniqid().'.'.$ext;
               
-        Storage::disk('public')->rename('recipe/'.$post->image, 'recipe/'.$imageName);
+        Storage::disk('public')->rename('recipe/'.$recipe->image, 'recipe/'.$imageName);
         $recipe->image = $imageName;
      }
 

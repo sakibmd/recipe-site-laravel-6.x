@@ -19,11 +19,6 @@
     p{
         text-align: justify;
     }
-
-    .card:hover{
-     background-color: rgb(209, 209, 209);
-  }
-   
 </style>
     
 
@@ -37,7 +32,7 @@
      <h1 class="upper-title text-center">All Of Our Amazing Recipes</h1>
         <div class="row">
          @foreach ($recipes as $item)
-           <div class="col-md-4 mb-3">
+           <div class="col-md-4">
              <div class="card">
                  <div class="card-body text-center">
                      <h4 class="card-title title text-center">{{ str_limit($item->title, 40) }}</h4>
@@ -51,7 +46,10 @@
            </div>
            @endforeach
         </div>
-        {{ $recipes->links() }}
+        <div style="display:flex; justify-content:center;align-items:center;">
+            {{ $recipes->links() }}
+        </div> 
+       
     </div>
 </section>
       

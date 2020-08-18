@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Lalezar&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Akronim|Anton|Indie+Flower|Merriweather|Modak');
 
+
 #nav-bar .navbar{
   background: linear-gradient(to right top, #00112a, #0a0f2a, #130c29, #1b0826, #210523);
 }
@@ -20,7 +21,7 @@
   font-weight: bold;
 }
 .navbar ul li a:hover{
-  color: grey! important;
+  color: rgb(197, 197, 197)! important;
 }
 .navbar ul li {
   padding: 0px 10px;
@@ -71,9 +72,37 @@
    #recipe .card-title{
        font-size: 18px;
    }
-   .#recipe .col-md-4 .card{
-     
+
+   #recipe .card{
+    margin: 20px;
+    transition: 1s;
    }
+   #recipe .card:hover{
+    background-color: rgb(209, 209, 209);
+    transition: 1s;
+   }
+
+   #recipe .card .button{
+     border-radius: 20px;
+     margin: 7px 0px;
+   }
+
+#recipe .btn-default{
+    text-decoration: none;
+}
+
+#recipe .btn-default{
+    background-color: rgb(109, 197, 143);
+    text-decoration: none;
+    color:rgb(0, 0, 0);
+    font-weight: 700;
+    padding: 10px 30px;
+}
+
+#recipe .btn-default:hover{
+  background-color: rgb(128, 146, 140);
+}
+
 
 /*****************************************************/
 
@@ -106,3 +135,6 @@
   color: grey;
 }
   
+
+
+/**************************************/

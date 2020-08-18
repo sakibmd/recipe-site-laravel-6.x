@@ -15,7 +15,7 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', 'HomeController@index');
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('recipe/{slug}', 'HomeController@details')->name('recipe.details');
@@ -28,7 +28,7 @@ Route::group([
     'prefix' => 'admin', 
     'namespace' => 'Admin', 
     'middleware' => [ 
-        'auth', 'admin' 
+        'auth', 'admin' ,'verified'
     ]
 ], function () {
     Route::get('dashboard','DashboardController@index')->name('dashboard');
@@ -48,7 +48,7 @@ Route::group([
     'prefix' => 'member', 
     'namespace' => 'Member', 
     'middleware' => [ 
-    'auth', 'member' 
+    'auth', 'member' , 'verified'
     ]
 ], function () {
     Route::get('dashboard','DashboardController@index')->name('dashboard');

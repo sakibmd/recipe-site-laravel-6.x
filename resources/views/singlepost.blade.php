@@ -8,7 +8,7 @@
         border-radius: 20px;
     }
 
-    .container{
+    .cont{
         padding: 40px 20px;
         margin-top: 95px;
     }
@@ -19,13 +19,8 @@
     p{
         text-align: justify;
     }
-
-    
-   
 </style>
     
-
-
 @section('content')
 
                     @if (session()->has('successSubscriber'))
@@ -45,7 +40,7 @@
                     @endif
 
       
-        <div class="container">
+        <div class="container cont">
             <div class="row">
                 <h2>Recipe Name: {{ $recipe->title }}</h2>
             </div>
@@ -61,15 +56,6 @@
             <a href="{{ route('home') }}" class="btn btn-danger">Back</a>
         </div>
       
-
-
-       
-  
-                
-
-
-
-
 @endsection
 
 @push('js')
