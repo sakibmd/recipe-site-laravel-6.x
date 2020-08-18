@@ -53,7 +53,7 @@
             <div class="row">
                 <p>{{ $recipe->body }}</p>
             </div>
-            <a href="{{ route('home') }}" class="btn btn-danger">Back</a>
+            <a href="{{ URL::previous() }}" class="btn btn-danger" >BACK</a>
         </div>
       
 @endsection

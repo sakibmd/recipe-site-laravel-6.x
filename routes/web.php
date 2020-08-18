@@ -19,6 +19,7 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('recipe/{slug}', 'HomeController@details')->name('recipe.details');
+Route::get('category/{id}', 'HomeController@categoryWisePost')->name('categoryWiseShow.recipe.details');
 Route::get('recipes', 'HomeController@allRecipe')->name('recipe.allRecipe');
 
 

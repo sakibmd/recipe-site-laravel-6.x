@@ -3,13 +3,15 @@
 @section('title','Home Page')
     
 
+@push('css')
+    <link href="{{ asset('assets/frontend/css/style.css') }}" rel="stylesheet">
+@endpush
+
 <style>
   
 
 </style>
     
-
-
 @section('content')
 
                     @if (session()->has('successSubscriber'))
@@ -47,10 +49,10 @@
            <div class="container text-center">
             <h1 class="upper-title text-center">Amazing Recipes</h1>
                <div class="row">
+                <div class="col-md-9 mb-3">
                 @foreach ($recipies as $item)
-                  <div class="col-md-4 mb-3">
-                    
-                    <div class="card">
+                  <div class="col-md-4" style="float: left;">
+                    <div class="card recipe">
                         <div class="card-body text-center">
                             <h4 class="card-title title text-center">{{ str_limit($item->title, 40) }}</h4>
                             <p class="card-text text-center pera">For Description</p>
@@ -62,7 +64,20 @@
                    
                   </div>
                   @endforeach
-
+                </div>
+                <div class="col-md-3">
+                    <div class="list-group">
+                        <button type="button" class="list-group-item  list-group-item-style">
+                          All Categories
+                        </button>
+                        @foreach ($categories as $category)
+                        <button type="button" class="list-group-item list-group-item-success">
+                            <a style="text-decoration: none" href="{{ route('categoryWiseShow.recipe.details', $category->id ) }}"><strong>{{ $category->name }} </strong>
+                            <span class="badge badge-dark">{{ $category->recipes->count() }}</span></a>
+                             </button>
+                        @endforeach
+                      </div>
+                </div>
                   <a href="{{ route('recipe.allRecipe') }}" class="btn btn-default m-auto see-more">See More</a>
                </div>
            </div>

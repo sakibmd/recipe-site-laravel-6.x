@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Recipe;
 use Illuminate\Http\Request;
 
@@ -11,7 +12,8 @@ class HomeController extends Controller
     public function index()
     {
         $recipies = Recipe::latest()->take(6)->get();
-        return view('welcome', compact('recipies'));
+        $categories = Category::all();
+        return view('welcome', compact('recipies', 'categories'));
     }
 
     public function details($slug){
@@ -22,5 +24,11 @@ class HomeController extends Controller
     public function allRecipe(){
         $recipes = Recipe::latest()->paginate(6);
         return view('recipes', compact('recipes'));
+    }
+
+    public function categoryWisePost($id){
+        $category = Category::find($id);
+        $recipes = Recipe::where('category_id', '=' ,$id)->paginate(6);
+        return view('categoryWiseShow', compact('category', 'recipes'));
     }
 }

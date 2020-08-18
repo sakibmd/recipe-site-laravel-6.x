@@ -1,7 +1,11 @@
 @extends('layouts.frontend.app')
 
-@section('title','All Recipe')
-    
+@section('title','Recipes')
+  
+@push('css')
+    <link href="{{ asset('assets/frontend/css/style.css') }}" rel="stylesheet">
+@endpush
+
 
 <style>
     img{
@@ -29,7 +33,7 @@
       
 <section id="recipe">
     <div class="container cont text-center" style="margin-top: 30px;">
-     <h1 class="upper-title text-center">All Of Our Amazing Recipes</h1>
+     <h1 class="upper-title text-center">Category: <span class="category-name">{{ $category->name }}</span></h1>
         <div class="row">
          @foreach ($recipes as $item)
            <div class="col-md-4">
@@ -49,16 +53,12 @@
         <div style="display:flex; justify-content:center;align-items:center;">
             {{ $recipes->links() }}
         </div> 
+        <br>
+        <a class="btn btn-danger" href="{{  url('/') }}">Back To Home </a>
        
     </div>
 </section>
       
-
-
-       
-  
-                
-
 
 
 
