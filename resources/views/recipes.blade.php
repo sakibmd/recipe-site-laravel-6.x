@@ -1,8 +1,8 @@
 @extends('layouts.frontend.app')
 
 @section('title','All Recipe')
-    
-
+@push('css')
+<link href="{{ asset('assets/frontend/css/style.css') }}" rel="stylesheet">
 <style>
     img{
         border-radius: 20px;
@@ -20,6 +20,9 @@
         text-align: justify;
     }
 </style>
+@endpush
+
+
     
 
 

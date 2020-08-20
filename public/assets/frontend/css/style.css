@@ -40,6 +40,7 @@
 #cover{
     margin-top:80px;
     background-image: url('https://www.gloriafood.com/wp-content/uploads/2018/06/pizza-cropped-photo-1024x429.jpg');
+    /* background-image: url("{{ URL::asset('assets/frontend/image/2.jpg }}"); */
     background-attachment: fixed;
     background-size:cover;
     padding: 160px 30px;
@@ -60,24 +61,27 @@
      padding:  120px 0px 50px 0px;
      font-weight: 600;
    }
-   #recipe .col-md-4 .card .title{
+   #recipe .col-lg-4 .card .title{
      font-weight: 600;
      font-family: 'Abril Fatface', cursive;
      padding-bottom: 7px;
    }
-   #recipe .col-md-4 .card .pera{
+   #recipe .col-lg-4 .card .pera{
      font-weight: 500;
      color: grey;
+   }
+   #recipe .full-recipe{
+     float: left;
    }
    #recipe .card-title{
        font-size: 18px;
    }
 
-   #recipe .card .recipe{
-    margin: 20px;
+  .recipe{
+    margin-bottom: 5px;
     transition: 1s;
    }
-   #recipe .card .recipe:hover{
+.recipe:hover{
     background-color: rgb(209, 209, 209);
     transition: 1s;
    }

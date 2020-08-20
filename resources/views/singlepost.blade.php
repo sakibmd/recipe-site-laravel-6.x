@@ -2,24 +2,27 @@
 
 @section('title','Single Post')
     
+@push('css')
+    <link href="{{ asset('assets/frontend/css/style.css') }}" rel="stylesheet">
+    <style>
+        img{
+            border-radius: 20px;
+        }
+    
+        .cont{
+            padding: 40px 20px;
+            margin-top: 95px;
+        }
+        h2, h4{
+            font-family: 'Lalezar', cursive;
+        }
+    
+        p{
+            text-align: justify;
+        }
+    </style>
+@endpush
 
-<style>
-    img{
-        border-radius: 20px;
-    }
-
-    .cont{
-        padding: 40px 20px;
-        margin-top: 95px;
-    }
-    h2, h4{
-        font-family: 'Lalezar', cursive;
-    }
-
-    p{
-        text-align: justify;
-    }
-</style>
     
 @section('content')
 

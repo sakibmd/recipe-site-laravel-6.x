@@ -49,9 +49,9 @@
            <div class="container text-center">
             <h1 class="upper-title text-center">Amazing Recipes</h1>
                <div class="row">
-                <div class="col-md-9 mb-3">
+                <div class="col-md-9 col-sm-8 mb-3">
                 @foreach ($recipies as $item)
-                  <div class="col-md-4" style="float: left;">
+                  <div class="col-lg-4 col-md-6 col-sm-12 mb-4  full-recipe">
                     <div class="card recipe">
                         <div class="card-body text-center">
                             <h4 class="card-title title text-center">{{ str_limit($item->title, 40) }}</h4>
@@ -65,7 +65,7 @@
                   </div>
                   @endforeach
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3 col-sm-4">
                     <div class="list-group">
                         <button type="button" class="list-group-item  list-group-item-style">
                           All Categories
