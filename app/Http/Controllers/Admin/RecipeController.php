@@ -44,7 +44,7 @@ class RecipeController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'title' => 'required',
+            'title' => 'required|unique:recipes',
             'body' => 'required',
             'featured_image' => 'required|mimes:jpeg,png,jpg',
             'images.*' => 'required|mimes:jpeg,png,jpg',
@@ -134,7 +134,7 @@ class RecipeController extends Controller
     public function update(Request $request, Recipe $recipe)
     {
         $this->validate($request,[
-            'title' => 'required',
+            'title' => 'required|unique:recipes,title'. $recipe->id,
             'body' => 'required',
             'categories' => 'required',
             'images.*' => 'mimes:jpeg,png,jpg',

@@ -19,6 +19,17 @@
 
             </div>
             <div class="col-md-6 card p-4">
+
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 <form action="{{ route('admin.recipe.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
@@ -52,15 +63,7 @@
 
 
             
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
+                   
                     <button type="submit" class="btn btn-success">Create</button>
                     <a href="{{ route('admin.recipe.index') }}" class="btn btn-danger">Back</a>
                 </form>

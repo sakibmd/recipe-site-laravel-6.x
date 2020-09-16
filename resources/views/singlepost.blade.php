@@ -44,11 +44,19 @@
 
       
         <div class="container cont">
+            <div class="row gallery" style="margin-top: 130px;">
+                @foreach (json_decode($recipe->images) as $picture)
+                           <div class="col-md-3">
+                               <a href="{{ asset('images/'.$picture) }}">
+                                           <img  src="{{ asset('images/'.$picture) }}" class="img-fluid m-2" style="height: 150px;width: 100%; ">
+                               </a>
+                           </div>
+                @endforeach
+           </div>
+
+
             <div class="row">
                 <h2>Recipe Name: {{ $recipe->title }}</h2>
-            </div>
-            <div class="row">
-                <img src="{{ asset('storage/recipe/'. $recipe->image) }}" alt="image" height="400px" width="640px">
             </div>
             <div class="row">
                 <h4 class="mt-4">Cooking Process</h4>
@@ -61,8 +69,17 @@
       
 @endsection
 
-@push('js')
-
-
-
-@endpush
+@section('js')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.js"></script>
+<script>
+   window.addEventListener('load', function() {
+        baguetteBox.run('.gallery', {
+            animation: 'fadeIn',
+            noScrollbars: true
+        });
+   });
+</script>
+@endsection
+@section('css')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.css">
+@endsection

@@ -19,6 +19,18 @@
 
             </div>
             <div class="col-md-6 card p-4">
+
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+
                 <form action="{{ route('member.recipe.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
@@ -30,9 +42,7 @@
                         <textarea class="form-control" name="body" id="body" cols="30" rows="3">{{ old('body') }}</textarea>
                     </div>
 
-                    <div class="form-group">
-                        <input type="file" name="image" value="{{ old('image') }}">
-                    </div>
+                    
                     <div class="form-group">
                         <select name="categories" id="category" class="form-control">
                             <option class="text-center" value="" >Select a category</option>
@@ -41,17 +51,19 @@
                             @endforeach
                         </select>
                     </div>
+
+                    <div class="form-group">
+                        <label for="featured_image">Featured Images</label>
+                        <input type="file" name="featured_image" class="form-control" id="featured_image">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="images">Images</label>
+                        <input type="file" name="images[]" class="form-control" multiple>
+                    </div>
                     
             
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
+                    
                     <button type="submit" class="btn btn-success">Create</button>
                     <a href="{{ route('member.recipe.index') }}" class="btn btn-danger">Back</a>
                 </form>

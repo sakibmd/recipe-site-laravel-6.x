@@ -21,7 +21,7 @@
 <!-- Styles -->
 <link href="{{ asset('assets/frontend/css/bootstrap.min.css') }}" rel="stylesheet">
 
-    @stack('css')
+    @yield('css')
     
 </head>
 <body>
@@ -38,7 +38,7 @@
   <!-- Scripts -->
   <script src="{{ asset('assets/frontend/js/bootstrap.min.js') }}"></script>
   <script src="{{ asset('assets/frontend/js/jquery-1.12.4.min.js') }}"></script> 
-@stack('js')
+    @yield('js')
 
 </body>
 </html>
