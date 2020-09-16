@@ -3,20 +3,14 @@
 @section('title','All Recipe')
 @push('css')
 <link href="{{ asset('assets/frontend/css/style.css') }}" rel="stylesheet">
-
 @endpush
 
-
-    
-
-
 @section('content')
-
-                    
-      
+  
 <section id="recipe">
     <div class="container cont text-center" style="margin-top: 30px;">
-     <h1 class="upper-title text-center">All Of Our Amazing Recipes</h1>
+       
+     <h1 class="upper-title text-center">{{ $recipes->count() }} Results For "{{ $query }}"</h1>
         <div class="row">
          @foreach ($recipes as $item)
            <div class="col-md-4">
@@ -40,14 +34,6 @@
     </div>
 </section>
       
-
-
-       
-  
-                
-
-
-
 
 @endsection
 

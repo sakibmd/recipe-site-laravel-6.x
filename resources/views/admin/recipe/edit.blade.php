@@ -33,9 +33,7 @@
                         <label for="body">Recipe Description</label>
                         <textarea class="form-control" name="body" id="body" cols="30" rows="3">{{ old('body', $recipe->body) }}</textarea>
                     </div>
-                    <div class="form-group">
-                        <input class="form-control" type="file" name="image" placeholder="select an image">
-                    </div>
+                   
 
                     <div class="form-group">
                         <select name="categories" id="category" class="form-control">
@@ -45,6 +43,17 @@
                                  value="{{ $category->id }}" >{{ $category->name }}</option>
                             @endforeach
                         </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="featured_image">Featured Images</label>
+                        <input id="featured_image" type="file" name="featured_image" class="form-control">
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="images">Images</label>
+                        <input id="images" class="form-control" type="file" name="images[]" multiple placeholder="select an image">
                     </div>
             
                     @if ($errors->any())

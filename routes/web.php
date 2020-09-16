@@ -22,6 +22,7 @@ Route::get('recipe/{slug}', 'HomeController@details')->name('recipe.details');
 Route::get('category/{id}', 'HomeController@categoryWisePost')->name('categoryWiseShow.recipe.details');
 Route::get('recipes', 'HomeController@allRecipe')->name('recipe.allRecipe');
 
+Route::get('search' , 'HomeController@search')->name('search'); 
 
 
 Route::group([ 

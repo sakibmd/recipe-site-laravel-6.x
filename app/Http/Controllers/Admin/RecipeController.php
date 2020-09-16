@@ -5,11 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Recipe;
 use App\Category;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
-use Carbon\Carbon;
 
 class RecipeController extends Controller
 {
@@ -46,39 +46,55 @@ class RecipeController extends Controller
         $this->validate($request,[
             'title' => 'required',
             'body' => 'required',
-            'image' => 'required|mimes:jpeg,png,jpg',
+            'featured_image' => 'required|mimes:jpeg,png,jpg',
+            'images.*' => 'required|mimes:jpeg,png,jpg',
             'categories' => 'required',
            ]);
 
-           // Get Form Image
-          $image = $request->file('image');
-          $slug = str_slug($request->title);
-          if (isset($image)) {
-             // Make Unique Name for Image 
-            $currentDate = Carbon::now()->toDateString();
-            $imageName = $slug.'-'.$currentDate.'-'.uniqid().'.'.$image->getClientOriginalExtension();
-           
-          // Check Category Dir is exists
-  
-              if (!Storage::disk('public')->exists('recipe')) {
-                 Storage::disk('public')->makeDirectory('recipe');
-              }
-  
-  
-              // Resize Image for category and upload
-              $postImage = Image::make($image)->resize(1600,1000)->stream();
-              Storage::disk('public')->put('recipe/'.$imageName,$postImage);
-  
-            }else{
-                $imageName = "default.png";
-            }
-  
 
+
+           //handle featured image
+           $featured_image = $request->file('featured_image');
+           if($featured_image)
+           {
+                // Make Unique Name for Image 
+               $currentDate = Carbon::now()->toDateString();
+               $featured_image_name = $currentDate.'-'.uniqid().'.'.$featured_image->getClientOriginalExtension();
+     
+     
+             // Check Dir is exists
+     
+                 if (!Storage::disk('public')->exists('featured')) {
+                    Storage::disk('public')->makeDirectory('featured');
+                 }
+     
+     
+                 // Resize Image  and upload
+                 $cropImage = Image::make($featured_image)->resize(400,400)->stream();
+                 Storage::disk('public')->put('featured/'.$featured_image_name,$cropImage);
+     
+            }
+          
+
+
+           if($request->hasfile('images'))
+           {
+                foreach($request->file('images') as $file)
+                {
+                    $name = time() . '-'. uniqid() . '.'.$file->extension();
+                    $file->move(public_path().'/images/', $name);  
+                    $data[] = $name;  
+                }
+           }
+
+           
+  
             $recipe = new Recipe();
             $recipe->title = $request->title;
-            $recipe->slug = $slug;
+            $recipe->slug = str_slug($request->title);
             $recipe->body = $request->body;
-            $recipe->image = $imageName;
+            $recipe->images = json_encode($data);
+            $recipe->featured_image = $featured_image_name;
             $recipe->user_id = Auth::id();
             $recipe->category_id = $request->categories;
             $recipe->save();
@@ -120,49 +136,69 @@ class RecipeController extends Controller
         $this->validate($request,[
             'title' => 'required',
             'body' => 'required',
-            'category_id' => 'required',
+            'categories' => 'required',
+            'images.*' => 'mimes:jpeg,png,jpg',
+            'featured_image' => 'mimes:jpeg,png,jpg',
            ]);
 
-           $image = $request->file('image');
-        $slug = str_slug($request->title);
-        if (isset($image)) {
-             
-        // Make Unique Name for Image 
-        $currentDate = Carbon::now()->toDateString();
-        $imageName = $slug.'-'.$currentDate.'-'.uniqid().'.'.$image->getClientOriginalExtension();
-  
-  
-        // Check Category Dir is exists
-        if (!Storage::disk('public')->exists('recipe')) {
-            Storage::disk('public')->makeDirectory('recipe');
-        }
-  
-        // Delete old post image
-        if(Storage::disk('public')->exists('recipe/'.$recipe->image)){
-            Storage::disk('public')->delete('recipe/'.$recipe->image);
-        }
-  
-        // Resize Image for category and upload
-        $postImage = Image::make($image)->resize(1600,1066)->stream();
-        Storage::disk('public')->put('recipe/'.$imageName,$postImage);
-  
-     }else{
 
-        $ext = pathinfo(public_path().'recipe/'.$recipe->image, PATHINFO_EXTENSION);
-        $currentDate = Carbon::now()->toDateString();
-        $imageName = $slug.'-'.$currentDate.'-'.uniqid().'.'.$ext;
-              
-        Storage::disk('public')->rename('recipe/'.$recipe->image, 'recipe/'.$imageName);
-        $recipe->image = $imageName;
-     }
 
+           //handle featured image
+
+           $featured_image = $request->file('featured_image');
+
+           if($featured_image)
+           {
+        
+                // Make Unique Name for Image 
+               $currentDate = Carbon::now()->toDateString();
+               $featured_image_name =$currentDate.'-'.uniqid().'.'.$featured_image->getClientOriginalExtension();
      
-     $recipe->title = $request->title;
-     $recipe->slug = $slug;
-     $recipe->body = $request->body;
-     $recipe->image = $imageName;
-     $recipe->save();
-     return redirect(route('admin.recipe.index'))->with('success', 'Recipe Updated Successfully');
+     
+                // Check Dir is exists
+                 if (!Storage::disk('public')->exists('featured')) {
+                    Storage::disk('public')->makeDirectory('featured');
+                 }
+
+                 
+                 // Resize Image and upload
+                 $cropImage = Image::make($featured_image)->resize(400,400)->stream();
+                 Storage::disk('public')->put('featured/'.$featured_image_name,$cropImage);
+
+                 if(Storage::disk('public')->exists('featured/'.$recipe->featured_image)){
+                    Storage::disk('public')->delete('featured/'.$recipe->featured_image);
+                }
+                $recipe->featured_image = $featured_image_name;
+            }
+
+          
+           //handle multiple images update
+           if($request->hasfile('images'))
+           {
+              
+                foreach(json_decode($recipe->images) as $picture){
+                        @unlink("images/". $picture);
+                }
+            
+                foreach($request->file('images') as $file)
+                {
+                    $name = time() . '-'. uniqid() . '.'.$file->extension();
+                    $file->move(public_path().'/images/', $name);  
+                    $data[] = $name;  
+                }
+
+                $recipe->images=json_encode($data);
+
+
+           }
+     
+            $recipe->title = $request->title;
+            $recipe->slug = str_slug($request->title);
+            $recipe->body = $request->body;
+            $recipe->category_id = $request->categories;
+
+            $recipe->save();
+            return redirect(route('admin.recipe.index'))->with('success', 'Recipe Updated Successfully');
 
 
     }
@@ -175,11 +211,17 @@ class RecipeController extends Controller
      */
     public function destroy(Recipe $recipe)
     {
-        if (Storage::disk('public')->exists('recipe/'.$recipe->image)) {
-            Storage::disk('public')->delete('recipe/'.$recipe->image);
-         }
-         $recipe->categories()->detach();
-         $recipe->delete();
-         return redirect(route('admin.recipe.index'))->with('success', 'Recipe Deleted Successfully');
+        //delete multiple added images
+        foreach(json_decode($recipe->images) as $picture){
+                @unlink("images/". $picture);
+        }
+
+        //delete old featured image
+        if(Storage::disk('public')->exists('featured/'.$recipe->featured_image)){
+            Storage::disk('public')->delete('featured/'.$recipe->featured_image);
+        }
+
+        $recipe->delete();
+        return redirect(route('admin.recipe.index'))->with('success', 'Recipe Deleted Successfully');
     }
 }

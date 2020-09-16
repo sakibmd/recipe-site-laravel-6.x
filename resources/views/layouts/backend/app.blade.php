@@ -19,7 +19,7 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
-
+    @yield('css')
 
     
 </head>
@@ -39,10 +39,14 @@
 
       <!-- Scripts -->
   <script src="{{ asset('assets/frontend/js/bootstrap.min.js') }}"></script>
-  <script src="{{ asset('assets/frontend/js/jquery-1.12.4.min.js') }}"></script> <script>
+  <script src="{{ asset('assets/frontend/js/jquery-1.12.4.min.js') }}"></script> 
+
+  <script>
         setTimeout(function() {
             $('#success').fadeOut('fast');
         }, 5000);
     </script>
+
+    @yield('js')
 </body>
 </html>

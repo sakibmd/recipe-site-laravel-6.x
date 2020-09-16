@@ -19,7 +19,8 @@ class CreateRecipesTable extends Migration
             $table->unsignedBigInteger('category_id');
             $table->string('title');
             $table->string('slug');
-            $table->string('image')->default('default.png');
+            $table->string('featured_image')->default('default.png');
+            $table->text('images');
             $table->text('body');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');

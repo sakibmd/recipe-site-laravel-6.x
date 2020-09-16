@@ -120,7 +120,7 @@ class RecipeController extends Controller
         $this->validate($request,[
             'title' => ['required'],
             'body' => ['required'],
-            'category_id' => ['required'],
+            'categories' => ['required'],
 
            ]);
 
@@ -163,6 +163,7 @@ class RecipeController extends Controller
      $recipe->slug = $slug;
      $recipe->body = $request->body;
      $recipe->image = $imageName;
+     $recipe->category_id = $request->categories;
      $recipe->save();
      return redirect(route('member.recipe.index'))->with('success', 'Recipe Updated Successfully');
     }

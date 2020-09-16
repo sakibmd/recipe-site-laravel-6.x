@@ -31,4 +31,10 @@ class HomeController extends Controller
         $recipes = Recipe::where('category_id', '=' ,$id)->paginate(6);
         return view('categoryWiseShow', compact('category', 'recipes'));
     }
+
+    public function search(Request $request){
+        $query = $request->input('query');
+        $recipes = Recipe::where('title','LIKE',"%$query%")->paginate(6);
+        return view('search', compact('recipes', 'query'));
+    }
 }

@@ -65,17 +65,20 @@
      font-weight: 600;
      font-family: 'Abril Fatface', cursive;
      padding-bottom: 7px;
+     font-size: 18px;
    }
    #recipe .col-lg-4 .card .pera{
      font-weight: 500;
      color: grey;
+     text-align: justify;
    }
    #recipe .full-recipe{
      float: left;
    }
-   #recipe .card-title{
-       font-size: 18px;
-   }
+   #recipe .cont{
+    padding: 40px 20px;
+    margin-top: 95px;
+  }
 
   .recipe{
     margin-bottom: 5px;
@@ -119,6 +122,10 @@
   color: #fff;
 }
 
+#recipe img{
+  border-radius: 20px;
+}
+
 .category-name{
   background-color: rgb(141, 54, 54);
   color: whitesmoke;
@@ -160,3 +167,16 @@
 
 
 /**************************************/
+.search{
+  margin-top: 45px;
+}
+.search h2{
+  font-weight: 600;
+  font-family: 'Abril Fatface', cursive;
+  padding-bottom: 7px;
+}
+.input-group.md-form.form-sm.form-1 input{
+  border: 1px solid #bdbdbd;
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+}
