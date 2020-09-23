@@ -1,6 +1,6 @@
 @extends('layouts.backend.app')
 
-@section('title', 'create')
+@section('title', 'create recipe')
 
 @push('css')
 <style>
