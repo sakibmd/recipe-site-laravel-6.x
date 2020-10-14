@@ -27,8 +27,8 @@
                      <a href="{{ route('recipe.details', $item->slug) }}" class="button"  style="color: white;text-decoration: none; font-weight: bold;background: black;
                      padding:12px; ">Read More</a>
                  </div>
-                 <img  src="{{ asset('storage/recipe/'. $item->image) }}" class="img-fluid" alt="Card image" style="padding: 0px 25px 25px 25px;">
-             </div>
+                 <img  src="{{ asset('storage/featured/'. $item->featured_image) }}" class="img-fluid" alt="Card image" style="padding: 0px 25px 25px 25px;">
+                </div>
             
            </div>
            @endforeach

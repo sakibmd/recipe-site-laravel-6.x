@@ -5,11 +5,14 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Recipe;
 use App\Category;
+use App\Notifications\NewRecipeNotify;
+use App\Subscriber;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Notification;
 
 class RecipeController extends Controller
 {
@@ -104,6 +107,13 @@ class RecipeController extends Controller
             $recipe->category_id = $request->categories;
             $recipe->is_approved = 'yes';
             $recipe->save();
+
+            $subscribers = Subscriber::all();
+            foreach ($subscribers as $subscriber) {
+                Notification::route('mail',$subscriber->email)
+                ->notify(new NewRecipeNotify($recipe));
+            }
+
             return redirect(route('admin.recipe.index'))->with('success', 'Recipe Inserted Successfully');
     }
 
@@ -118,6 +128,12 @@ class RecipeController extends Controller
         $recipe = Recipe::find($id);
         $recipe->is_approved = 'yes';
         $recipe->save();
+
+        $subscribers = Subscriber::all();
+        foreach ($subscribers as $subscriber) {
+            Notification::route('mail',$subscriber->email)
+            ->notify(new NewRecipeNotify($recipe));
+        }
 
         session()->flash('success', 'Recipe Approved Successfully');
         return redirect()->back();

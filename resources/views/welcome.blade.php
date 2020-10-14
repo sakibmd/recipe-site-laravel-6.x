@@ -40,22 +40,7 @@
        </section>
 
 
-       <section id="search" class="search">
-           <div class="container text-center">
-            <h2>You can search our recipes</h2>
-            <div class="row text-center" >
-                <br>
-                <div class="form-inline m-auto">
-                    <form action="{{ route('search') }}" method="GET">
-                        @csrf
-                        <input type="text" name="query" placeholder="Enter Item Name" size="40px" class="px-4 py-2 form-control">
-                        <input type="submit" value="Search" class="btn btn-danger px-4 py-2 ml-1">
-                    </form>
-                </div>
-            </div>
-            
-           </div>
-       </section>
+       
 
 
        <section id="recipe">
@@ -101,6 +86,9 @@
        </section>
 
 
+       
+
+
 
        <div class="container-fluid" id="subscribe">
            <div class="row my-5">
@@ -140,6 +128,24 @@
                     </form>
            </div>
        </div>
+
+
+       <section id="search" class="search py-5">
+        <div class="container text-center">
+         <h2>You can search our recipes</h2>
+         <div class="row text-center" >
+             <br>
+             <div class="form-inline m-auto">
+                 <form action="{{ route('search') }}" method="GET">
+                     @csrf
+                     <input type="text" name="query" placeholder="Enter Item Name" size="40px" class="px-4 py-2 form-control">
+                     <input type="submit" value="Search" class="btn btn-danger px-4 py-2 ml-1">
+                 </form>
+             </div>
+         </div>
+         
+        </div>
+    </section>
 
 
   

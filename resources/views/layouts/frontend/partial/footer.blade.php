@@ -18,6 +18,6 @@
       </div>
     </div>
     <hr style="background-color: white;" class="pb-0">
-    <p class="text-center p-3 mb-0"> &copy;Copyright <b>July, 2020</b></p>
+    <p class="text-center p-3 mb-0"> &copy; <b>Cheifs Squad</b></p>
   </div>
 </section>

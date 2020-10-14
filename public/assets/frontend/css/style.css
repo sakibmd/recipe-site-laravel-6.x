@@ -4,7 +4,7 @@
 
 
 #nav-bar .navbar{
-  background: linear-gradient(to right top, #00112a, #0a0f2a, #130c29, #1b0826, #210523);
+  background: linear-gradient(to right top, #6a6991, #7a689b, #665e80, #584d6d, #827d8a);
 }
 #nav-bar .navbar .navbar-brand{
   color: #fff;
@@ -57,9 +57,9 @@
 /*****************************************************/
 #recipe .upper-title{
     font-family: Arial, Helvetica, sans-serif;
-      margin: 0px;
-     padding:  120px 0px 50px 0px;
-     font-weight: 600;
+    margin: 0px;
+    padding:  120px 0px 50px 0px;
+    font-weight: 600;
    }
    #recipe .col-lg-4 .card .title{
      font-weight: 600;
@@ -135,7 +135,7 @@
 /* footer */
 #footer{
     padding-top: 75px; 
-    background: linear-gradient(to right top, #09030f, #0c0613, #0e0a17, #0f0d1b, #10101e)!important;
+    background: linear-gradient(to right top, #6a6991, #7a689b, #665e80, #584d6d, #827d8a);
 }
 #footer .head{
     padding-bottom: 20px;
@@ -162,7 +162,8 @@
 
 /**************************************/
 .search{
-  margin-top: 45px;
+  margin-top: 40px;
+  
 }
 .search h2{
   font-weight: 600;
@@ -186,7 +187,7 @@
   background-color: rgb(165, 113, 16);
   color: rgb(238, 238, 238);
   padding: 60px 80px;
-  margin-top: 50px;
+  margin-top: 40px;
 }
 #subscribe h1{
   font-weight: 600;
