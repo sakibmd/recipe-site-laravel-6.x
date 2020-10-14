@@ -20,9 +20,14 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        $recipes = Recipe::latest()->paginate(8);
+        $recipes = Recipe::where('is_approved', 'yes')->latest()->paginate(12);
         return view('admin.recipe.index',compact('recipes'));
     }
+
+
+    
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -97,9 +102,28 @@ class RecipeController extends Controller
             $recipe->featured_image = $featured_image_name;
             $recipe->user_id = Auth::id();
             $recipe->category_id = $request->categories;
+            $recipe->is_approved = 'yes';
             $recipe->save();
             return redirect(route('admin.recipe.index'))->with('success', 'Recipe Inserted Successfully');
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Recipe  $recipe
+     * @return \Illuminate\Http\Response
+     */
+    public function approval($id)
+    {
+        $recipe = Recipe::find($id);
+        $recipe->is_approved = 'yes';
+        $recipe->save();
+
+        session()->flash('success', 'Recipe Approved Successfully');
+        return redirect()->back();
+    }
+
+
 
     /**
      * Display the specified resource.
@@ -111,6 +135,8 @@ class RecipeController extends Controller
     {
         return view('admin.recipe.show', compact('recipe')); 
     }
+
+
 
     /**
      * Show the form for editing the specified resource.
@@ -222,6 +248,13 @@ class RecipeController extends Controller
         }
 
         $recipe->delete();
-        return redirect(route('admin.recipe.index'))->with('success', 'Recipe Deleted Successfully');
+        session()->flash('success', 'Recipe Deleted Successfully');
+        return redirect()->back();
+    }
+
+
+    public function pending(){
+        $recipes = Recipe::where('is_approved', 'no')->latest()->paginate(12);
+        return view('admin.recipe.pendingList', compact('recipes'));
     }
 }

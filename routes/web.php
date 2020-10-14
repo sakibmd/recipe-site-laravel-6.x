@@ -24,6 +24,8 @@ Route::get('recipes', 'HomeController@allRecipe')->name('recipe.allRecipe');
 
 Route::get('search' , 'HomeController@search')->name('search'); 
 
+Route::post('subscriber', 'SubscriberController@store')->name('subscriber.store');
+
 
 Route::group([ 
     'as' => 'admin.', 
@@ -36,6 +38,8 @@ Route::group([
     Route::get('dashboard','DashboardController@index')->name('dashboard');
     Route::resource('category','CategoryController');
     Route::resource('recipe','RecipeController');
+    Route::get('pending/recipe','RecipeController@pending')->name('recipe.pending');
+    Route::get('pending/approval/{id}','RecipeController@approval')->name('recipe.approve');
 
     Route::get('memberlist','MemberController@index')->name('memberlist.index');
     Route::delete('memberlist/{id}','MemberController@destroy')->name('member.destroy');
@@ -43,6 +47,10 @@ Route::group([
     Route::get('profile-info','SettingsController@index')->name('profile');
     Route::get('profile-info/edit','SettingsController@edit')->name('profile.edit');
     Route::put('profile-update','SettingsController@updateProfile')->name('profile.update');
+
+
+    Route::get('subscriber','SubscriberController@index')->name('subscriber.index');
+    Route::delete('subscriber/{subscriber}','SubscriberController@deleteSubscriberFunction')->name('subscriber.destroy');
 });
 
 Route::group([ 
@@ -55,6 +63,7 @@ Route::group([
 ], function () {
     Route::get('dashboard','DashboardController@index')->name('dashboard');
     Route::resource('recipe','RecipeController');
+    Route::get('pending/recipe','RecipeController@pending')->name('recipe.pending');
     
     Route::get('profile-info','SettingsController@index')->name('profile');
     Route::get('profile-info/edit','SettingsController@edit')->name('profile.edit');

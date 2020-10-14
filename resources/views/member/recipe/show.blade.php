@@ -10,8 +10,8 @@
 
 @section('content')
 
-    <a href="{{ route('member.recipe.index') }}" class="btn btn-danger">Back</a>
-    <a href="{{ route('member.recipe.edit', $recipe->id) }}" class="btn btn-info">Edit</a>
+    <a href="{{ URL::previous() }}" class="btn btn-danger btn-sm">Back</a>
+    <a href="{{ route('member.recipe.edit', $recipe->id) }}" class="btn btn-info btn-sm">Edit</a>
 
     <div class="container mt-4" >
 

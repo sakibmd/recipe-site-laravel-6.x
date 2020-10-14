@@ -18,6 +18,7 @@ class SettingsController extends Controller
         $user = Auth::user();
         return view('admin.profile.edit', compact('user'));
     }
+
     public function updateProfile(Request $request){
        
         $this->validate($request,[
@@ -32,4 +33,9 @@ class SettingsController extends Controller
         $user->save();
         return redirect(route('admin.profile'))->with('success', 'Profile Updated Successfully');
     }
+
+
+
+   
+
 }

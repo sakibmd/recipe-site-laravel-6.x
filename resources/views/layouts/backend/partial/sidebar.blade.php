@@ -20,12 +20,23 @@
 
         <a class="{{ Request::is('admin/recipe*') ? 'active' : '' }}"
                 href="{{ route('admin.recipe.index') }}">
-        Recipes
+            Recipes
+        </a>
+
+        <a class="{{ Request::is('admin/pending/recipe') ? 'active' : '' }}"
+                href="{{ route('admin.recipe.pending') }}">
+            Pending Recipes
         </a>
 
         <a class="{{ Request::is('admin/memberlist*') ? 'active' : '' }}"
                 href="{{ route('admin.memberlist.index') }}">
         Member List
+        </a>
+
+
+        <a class="{{ Request::is('admin/subscriber') ? 'active' : '' }}"
+                href="{{ route('admin.subscriber.index') }}">
+        Subscriber List
         </a>
 
         <a class="{{ Request::is('admin/profile*') ? 'active' : '' }}"
@@ -54,6 +65,11 @@
              <a class="{{ Request::is('member/recipe*') ? 'active' : '' }}"
                 href="{{ route('member.recipe.index') }}">
                 Recipes
+            </a>
+
+            <a class="{{ Request::is('member/pending/recipe') ? 'active' : '' }}"
+                href="{{ route('member.recipe.pending') }}">
+                Pending Recipies
             </a>
 
              <a class="{{ Request::is('member/profile*') ? 'active' : '' }}"

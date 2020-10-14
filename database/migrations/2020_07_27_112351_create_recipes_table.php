@@ -20,6 +20,8 @@ class CreateRecipesTable extends Migration
             $table->string('title');
             $table->string('slug');
             $table->string('featured_image')->default('default.png');
+            $table->string('is_approved')->default('no');
+            $table->integer('view_count')->default(0);
             $table->text('images');
             $table->text('body');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

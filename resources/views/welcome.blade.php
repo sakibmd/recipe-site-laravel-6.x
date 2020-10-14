@@ -34,13 +34,7 @@
        <section id="cover"> 
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-6">
-                    <div class="card">
-                        <h3>Delicious  Homemade Pizza</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati laboriosam voluptas
-                             fuga dolorem aperiam voluptate corrupti, iste optio, nihil.</p>
-                    </div>
-                </div>
+                
             </div>
         </div>
        </section>
@@ -69,8 +63,8 @@
             <h1 class="upper-title text-center">Amazing Recipes</h1>
                <div class="row">
                 <div class="col-sm-8 col-md-9 mb-3">
-                @foreach ($recipies as $item)
-                  <div class="col-sm-12  col-md-6 col-lg-4 mb-4  full-recipe">
+                @forelse ($recipies as $item)
+                  <div class="col-sm-12  col-md-6 col-lg-6 mb-4  full-recipe">
                     <div class="card recipe">
                         <div class="card-body text-center">
                             <h4 class="card-title title text-center">{{ str_limit($item->title, 40) }}</h4>
@@ -82,11 +76,13 @@
                     </div>
                    
                   </div>
-                  @endforeach
+                  @empty  
+                        <h3 class="bg-dark text-white p-3 m-3">No Recipe Found</h3>
+                  @endforelse
                 </div>
                 <div class="col-sm-4 col-md-3 ">
                     <div class="list-group">
-                        <button type="button" class="list-group-item  list-group-item-style">
+                        <button type="button" class="list-group-item  list-group-item-style bg-dark">
                           All Categories
                         </button>
                         @foreach ($categories as $category)
@@ -97,10 +93,53 @@
                         @endforeach
                       </div>
                 </div>
-                  <a href="{{ route('recipe.allRecipe') }}" class="btn btn-default m-auto see-more">See More</a>
+                @if ($recipies->count() > 0)
+                     <a href="{{ route('recipe.allRecipe') }}" class="btn btn-default m-auto see-more">See More</a>
+                @endif
                </div>
            </div>
        </section>
+
+
+
+       <div class="container-fluid" id="subscribe">
+           <div class="row my-5">
+               <h1 class="m-auto">Subscribe Our Website For Quick Update</h1>
+           </div>
+           <div class="row my-2 justify-content-center">
+                @if (session()->has('successSubscriber'))
+                    <div class="alert alert-success m-3 text-center" id="success" role="alert">
+                    {{ session()->get('successSubscriber') }}
+                    </div>
+                @endif 
+
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+           </div>
+           <div class="row justify-content-center">
+                    
+            
+                    <form action="{{ route('subscriber.store') }}" method="POST">
+                        @csrf
+                        <div class="d-flex justify-content-start col-md-12">
+                             <div class="form-group">
+                                 <input type="email" name="email" placeholder="enter email" class="form-control">
+                             </div>
+                             <div class="form-group">
+                                 <button type="submit" class="btn btn-success">Subscribe</button>
+                             </div>
+                        </div>
+                        
+                    </form>
+           </div>
+       </div>
 
 
   

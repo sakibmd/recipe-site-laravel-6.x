@@ -1,6 +1,6 @@
 @extends('layouts.backend.app')
 
-@section('title', 'List')
+@section('title', 'Pending List')
 
 @push('css')
 <style>
@@ -12,12 +12,10 @@
 @section('content')
 
 <div class="container">
-    <h2>Your Own Recipes</h2>
+    <h2>Pending Recipes</h2>
 
 <br>
-<p>
-    <a class="btn btn-info" href="{{ route('member.recipe.create') }}">Add New Recipe</a>
-</p>
+
 <hr>
 @if (session()->has('success'))
 <div class="alert alert-success m-3 text-center" id="success" role="alert">
@@ -36,9 +34,7 @@
            <th scope="col">Category</th>
            <th scope="col">Image</th>
            <th scope="col">Created At</th>
-           <th scope="col">Show</th>
-           <th scope="col">Edit</th>
-           <th scope="col">Delete</th>
+           <th colspan="3">Action</th>
          </tr>
        </thead>
        <tbody>
@@ -49,17 +45,19 @@
                    <td>{{ str_limit($recipe->body, 20) }}</td>
                    <td>{{ $recipe->category->name }}</td>
                    <td><img style="height: 80px; width: 138px" src="{{ asset('storage/featured/'. $recipe->featured_image) }}" alt="image"></td>
-                  
+   
+   
+   
                    <td>{{ $recipe->created_at->diffForHumans() }}</td>
                
-                   <td><a href="{{ route('member.recipe.show', $recipe->id) }}" class="btn btn-success btn-block">Details</a></td>
+                   <td><a href="{{ route('admin.recipe.show', $recipe->id) }}" class="btn btn-success btn-block">Details</a></td>
                    <td>
-                       <a href="{{ route('member.recipe.edit', $recipe->id) }}" class="btn btn-info btn-block">Edit</a>
+                       <a href="{{ route('admin.recipe.approve', $recipe->id) }}" class="btn btn-info btn-block">Approve</a>
                    </td>
                    <td>
-                       <button class="btn btn-danger btn-block" type="button" onclick="deleteRecipe({{ $recipe->id }})">Delete</button>
+                       <button class="btn btn-danger btn-block" type="button" onclick="deleteRecipe({{ $recipe->id }})">Remove</button>
                              
-                       <form id="deleteRecipe-{{ $recipe->id }}" action="{{ route('member.recipe.destroy', $recipe->id) }}" 
+                       <form id="deleteRecipe-{{ $recipe->id }}" action="{{ route('admin.recipe.destroy', $recipe->id) }}" 
                        method="POST" style="display: none;">
                              @csrf
                              @method('DELETE')   
@@ -75,8 +73,9 @@
      {{ $recipes->links() }}
    </div>
 @else
-    <h2 class="bg-dark p-3 m-3 text-white">No Recipe Found</h2>
+    <h2 class="bg-dark p-3 m-3 text-white">No Pending Recipe Found</h2>
 @endif
+
 
 
 
@@ -96,10 +95,10 @@
                 buttonsStyling: false
             })
             swalWithBootstrapButtons.fire({
-                title: 'Are you sure to delete this?',
+                title: 'Are you sure to remove this recipe?',
                 type: 'warning',
                 showCancelButton: true,
-                confirmButtonText: 'Yes, delete it!',
+                confirmButtonText: 'Yes, remove it!',
                 cancelButtonText: 'No, cancel!',
                 reverseButtons: true
             }).then((result) => {

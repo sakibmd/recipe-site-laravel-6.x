@@ -20,8 +20,14 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        $recipes = Recipe::latest()->where('user_id', '=', Auth::id())->paginate(8);
+        $recipes = Recipe::latest()->where('user_id', '=', Auth::id())->where('is_approved', 'yes')->paginate(12);
         return view('member.recipe.index',compact('recipes'));
+    }
+
+    public function pending()
+    {
+        $recipes = Recipe::latest()->where('user_id', '=', Auth::id())->where('is_approved', 'no')->paginate(12);
+        return view('member.recipe.pendingList',compact('recipes'));
     }
 
     /**
@@ -216,6 +222,7 @@ class RecipeController extends Controller
         }
 
          $recipe->delete();
-         return redirect(route('member.recipe.index'))->with('success', 'Recipe Deleted Successfully');
+         session()->flash('success', 'Recipe Deleted Successfully');
+         return redirect()->back();
     }
 }

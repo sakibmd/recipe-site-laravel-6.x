@@ -10,7 +10,7 @@
 
 @section('content')
 
-    <a href="{{ route('admin.recipe.index') }}" class="btn btn-danger">Back</a>
+    <a href="{{ URL::previous() }}" class="btn btn-danger">Back</a>
     <a href="{{ route('admin.recipe.edit', $recipe->id) }}" class="btn btn-info">Edit</a>
 
 

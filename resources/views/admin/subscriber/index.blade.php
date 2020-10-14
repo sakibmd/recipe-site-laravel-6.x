@@ -1,23 +1,18 @@
 @extends('layouts.backend.app')
 
-@section('title', 'list')
+@section('title', 'Subscriber list')
 
 @push('css')
-<style>
-    
- </style> 
+
 @endpush
 
 
 @section('content')
 
 <div class="container">
-    <h2>Recipes</h2>
-
+    <h2>Subscriber List</h2>
 <br>
-<p>
-    <a class="btn btn-info" href="{{ route('admin.recipe.create') }}">Add New Recipe</a>
-</p>
+
 <hr>
 @if (session()->has('success'))
 <div class="alert alert-success m-3 text-center" id="success" role="alert">
@@ -26,44 +21,31 @@
 @endif 
 
 
-@if ($recipes->count() > 0)
+@if ($subscribers->count() > 0)
 <div class="table-responsive">
 
     <table class="table table-dark">
        <thead>
          <tr>
            <th scope="col">Id</th>
-           <th scope="col">Title</th>
-           <th scope="col">Body</th>
-           <th scope="col">Category</th>
-           <th scope="col">Image</th>
-           <th scope="col">Created At</th>
+           <th scope="col">Email</th>
+           <th scope="col">Subscriber Since</th>
            <th colspan="3">Action</th>
          </tr>
        </thead>
        <tbody>
-           @forelse ($recipes as $key => $recipe)
+           @forelse ($subscribers as $key => $subscriber)
                <tr>
                    <td>{{ $key+1 }}</td>
-                   <td>{{  str_limit($recipe->title, 15)}}</td>
-                   <td>{{ str_limit($recipe->body, 20) }}</td>
-                   <td>{{ $recipe->category->name }}</td>
-                   <td><img style="height: 80px; width: 138px" src="{{ asset('storage/featured/'. $recipe->featured_image) }}" alt="image"></td>
-   
-   
-   
-                   <td>{{ $recipe->created_at->diffForHumans() }}</td>
+                   <td>{{ $subscriber->email }}</td>
+                   <td>{{ $subscriber->created_at->diffForHumans() }}</td>
                
-                   <td><a href="{{ route('admin.recipe.show', $recipe->id) }}" class="btn btn-success btn-block">Details</a></td>
                    <td>
-                       <a href="{{ route('admin.recipe.edit', $recipe->id) }}" class="btn btn-info btn-block">Edit</a>
-                   </td>
-                   <td>
-                       <button class="btn btn-danger btn-block" type="button" onclick="deleteRecipe({{ $recipe->id }})">Delete</button>
+                       <button class="btn btn-danger btn-sm" type="button" onclick="deleteSubscriber({{ $subscriber->id }})">Remove</button>
                              
-                       <form id="deleteRecipe-{{ $recipe->id }}" action="{{ route('admin.recipe.destroy', $recipe->id) }}" 
-                       method="POST" style="display: none;">
-                             @csrf
+                       <form id="deleteSubscriber-{{ $subscriber->id }}" action="{{ route('admin.subscriber.destroy', $subscriber->id) }}" 
+                            method="POST" style="display: none;">
+                                    @csrf
                              @method('DELETE')   
                        </form>
                    </td>
@@ -74,10 +56,9 @@
            @endforelse
        </tbody>
      </table>
-     {{ $recipes->links() }}
    </div>
 @else
-    <h2 class="bg-dark p-3 m-3 text-white">No Recipe Found</h2>
+    <h2 class="bg-dark p-3 m-3 text-white">No Subscriber Found</h2>
 @endif
 
 
@@ -93,7 +74,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
        <script type="text/javascript">
-       function deleteRecipe(id){
+       function deleteSubscriber(id){
            const swalWithBootstrapButtons = Swal.mixin({
                 customClass: {
                 confirmButton: 'btn btn-success',
@@ -102,16 +83,16 @@
                 buttonsStyling: false
             })
             swalWithBootstrapButtons.fire({
-                title: 'Are you sure to delete this?',
+                title: 'Are you sure to remove this subscriber?',
                 type: 'warning',
                 showCancelButton: true,
-                confirmButtonText: 'Yes, delete it!',
+                confirmButtonText: 'Yes, remove it!',
                 cancelButtonText: 'No, cancel!',
                 reverseButtons: true
             }).then((result) => {
                 if (result.value) {
                     event.preventDefault();
-                    document.getElementById('deleteRecipe-'+id).submit();
+                    document.getElementById('deleteSubscriber-'+id).submit();
                 } else if (
                 /* Read more about handling dismissals below */
                 result.dismiss === Swal.DismissReason.cancel

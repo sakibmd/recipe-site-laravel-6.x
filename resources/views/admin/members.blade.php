@@ -41,6 +41,7 @@
                 <td>{{ $member->name }}</td>
                 <td>{{ $member->created_at }}</td>
                 <td>{{ $member->contact }}</td>
+                <td>{{ $member->email }}</td>
                 <td>{{ $member->age }}</td>
                 <td>
                     <button class="btn btn-danger btn-block" type="button" onclick="deleteMember({{ $member->id }})">Delete</button>

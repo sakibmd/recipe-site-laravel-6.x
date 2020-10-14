@@ -1,6 +1,6 @@
 @extends('layouts.backend.app')
 
-@section('title', 'List')
+@section('title', 'Pending List')
 
 @push('css')
 <style>
@@ -12,12 +12,10 @@
 @section('content')
 
 <div class="container">
-    <h2>Your Own Recipes</h2>
+    <h2>Pending Recipes</h2>
 
 <br>
-<p>
-    <a class="btn btn-info" href="{{ route('member.recipe.create') }}">Add New Recipe</a>
-</p>
+
 <hr>
 @if (session()->has('success'))
 <div class="alert alert-success m-3 text-center" id="success" role="alert">
@@ -75,7 +73,7 @@
      {{ $recipes->links() }}
    </div>
 @else
-    <h2 class="bg-dark p-3 m-3 text-white">No Recipe Found</h2>
+    <h2 class="bg-dark p-3 m-3 text-white">No Pending Recipe Found</h2>
 @endif
 
 
