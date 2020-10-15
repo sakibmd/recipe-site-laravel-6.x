@@ -29,7 +29,7 @@
 @if ($recipes->count() > 0)
 <div class="table-responsive">
 
-    <table class="table table-dark">
+    <table class="table table-dark  table-hover">
        <thead>
          <tr>
            <th scope="col">Id</th>
@@ -56,7 +56,10 @@
                
                    <td><a href="{{ route('admin.recipe.show', $recipe->id) }}" class="btn btn-success btn-block">Details</a></td>
                    <td>
-                       <a href="{{ route('admin.recipe.edit', $recipe->id) }}" class="btn btn-info btn-block">Edit</a>
+                       @if (Auth::id() == $recipe->user_id)
+                             <a href="{{ route('admin.recipe.edit', $recipe->id) }}" class="btn btn-info btn-block">Edit</a>
+                       @endif
+                       
                    </td>
                    <td>
                        <button class="btn btn-danger btn-block" type="button" onclick="deleteRecipe({{ $recipe->id }})">Delete</button>

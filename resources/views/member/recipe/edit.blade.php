@@ -17,11 +17,9 @@
     
 
     <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-
-            </div>
-            <div class="col-md-6 card p-4">
+        <div class="row justify-content-center">
+         
+            <div class="col-md-12 card p-4">
                 <form action="{{ route('member.recipe.update', $recipe->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')

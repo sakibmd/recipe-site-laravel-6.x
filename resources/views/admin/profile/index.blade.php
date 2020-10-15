@@ -14,32 +14,40 @@
 @endif 
 
 
-<div class="row">
-    <div class="col-md-3"></div>
-<div class="col-md-6">
-   
-
-      <ul class="list-group">
-        <li class="list-group-item list-group-item-success active"><strong>Profile Info</strong></li>
-        <li class="list-group-item list-group-item-light" style="border-color: gray">
-          <p>Name: <strong>{{ $user->name }}</strong></p>
-          <p>Email: <strong>{{ $user->email }}</strong></p>
-          <p>Contact: <strong>{{ $user->contact }}</strong></p>
-          <p>Age: <strong>{{ $user->age }}</strong></p>
-         
+<div class="row justify-content-center">
+  <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+              <strong>Profile Info</strong>
+          </div>
+          <div class="card-body">
+            <table class="table table-striped  table-hover">
+              <tr>
+                <th>Name: </th>
+                <td>{{ $user->name }}</td>
+              </tr>
+              <tr>
+                <th>Email: </th>
+                <td>{{ $user->email }}</td>
+              </tr>
+              <tr>
+                <th>Contact: </th>
+                <td>{{ $user->contact }}</td>
+              </tr>
+              <tr>
+                <th>Age: </th>
+                <td>{{ $user->age }}</td>
+              </tr>
+            </table>
+          </div>
+          <div class="card-footer">
             <a href="{{ route('admin.profile.edit') }}" class="btn btn-success">Edit</a>
             <a href="{{ URL::previous()  }}" class="btn btn-danger">Back</a>
-         
-          
-
-        </li>
-        
-      </ul>
+          </div>
+        </div>
+  </div>
 </div>
-<div class="col-md-3"></div>
 
-
-</div>
 
 @endsection
 

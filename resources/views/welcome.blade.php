@@ -48,16 +48,17 @@
             <h1 class="upper-title text-center">Amazing Recipes</h1>
                <div class="row">
                 <div class="col-sm-8 col-md-9 mb-3">
-                @forelse ($recipies as $item)
+                @forelse ($recipes as $item)
                   <div class="col-sm-12  col-md-6 col-lg-6 mb-4  full-recipe">
                     <div class="card recipe">
                         <div class="card-body text-center">
                             <h4 class="card-title title text-center">{{ str_limit($item->title, 40) }}</h4>
+                            <p class="card-title">View: {{ $item->view_count }}</p>
                             <p class="card-text text-center pera">For Description</p>
                             <a href="{{ route('recipe.details', $item->slug) }}" class="button"  style="color: white;text-decoration: none; font-weight: bold;background: black;
                             padding:12px; ">Read More</a>
                         </div>
-                        <img  src="{{ asset('storage/featured/'. $item->featured_image) }}" class="img-fluid" alt="Card image" style="padding: 0px 25px 25px 25px;">
+                        <img  src="{{ asset('storage/featured/'. $item->featured_image) }}" class="img-fluid" alt="Card image" style="padding: 0px 25px 25px 25px; height: 250px;">
                     </div>
                    
                   </div>
@@ -78,7 +79,7 @@
                         @endforeach
                       </div>
                 </div>
-                @if ($recipies->count() > 0)
+                @if ($recipes->count() > 0)
                      <a href="{{ route('recipe.allRecipe') }}" class="btn btn-default m-auto see-more">See More</a>
                 @endif
                </div>
@@ -131,21 +132,67 @@
 
 
        <section id="search" class="search py-5">
-        <div class="container text-center">
-         <h2>You can search our recipes</h2>
-         <div class="row text-center" >
-             <br>
-             <div class="form-inline m-auto">
-                 <form action="{{ route('search') }}" method="GET">
-                     @csrf
-                     <input type="text" name="query" placeholder="Enter Item Name" size="40px" class="px-4 py-2 form-control">
-                     <input type="submit" value="Search" class="btn btn-danger px-4 py-2 ml-1">
-                 </form>
-             </div>
-         </div>
-         
-        </div>
-    </section>
+            <div class="container text-center">
+            <h2>You can search our recipes</h2>
+            <div class="row text-center" >
+                <br>
+                <div class="form-inline m-auto">
+                    <form action="{{ route('search') }}" method="GET">
+                        @csrf
+                        <input type="text" name="query" placeholder="Enter Item Name" size="40px" class="px-4 py-2 form-control">
+                        <input type="submit" value="Search" class="btn btn-danger px-4 py-2 ml-1">
+                    </form>
+                </div>
+            </div>
+            
+            </div>
+        </section>
+
+
+        <section id="meet">
+            <div class="container-flid">
+                <div class="row justify-content-center">
+                    <h1><strong>Meet Our Team</strong></h1>
+                </div>
+                <div class="row justify-content-center">
+                    <p class="head">Meet Our Experianced Team</p>
+                </div>
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <img src="{{ asset('assets/frontend/image/Shaker.jpg') }}" alt="img" class="img-fluid">
+                        <p class="my-4"><h2 class="name">Shaker Ahmed</h2></p>
+                        <p><small>Website Founder</small></p>
+                        <p class="mb-3 lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                        <p>Email: shakerahmedgd@gmail.com 
+                            <br>
+                            Contact: +8801746685206
+                        </p>
+                       
+                    </div>
+                    <div class="col-md-4">
+                        <img src="{{ asset('assets/frontend/image/Dipika.jpg') }}" alt="img" class="img-fluid">
+                        <p class="my-4"><h2 class="name">Dipika Malakar</h2></p>
+                        <p><small>Website Founder</small></p>
+                        <p class="mb-3 lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                        <p>Email: dipikamalakar2290@gmail.com
+                            <br>
+                            Contact: +8801751842290
+                        </p>
+                    </div>
+
+                    <div class="col-md-4">
+                        <img src="{{ asset('assets/frontend/image/Sharif.jpg') }}" alt="img" class="img-fluid">
+                        <p class="my-4"><h2 class="name">Sharif Ahmed</h2></p>
+                        <p><small>Website Founder</small></p>
+                        <p class="mb-3 lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                        <p>Email: Email: sharif@metrouni.edu.bd 
+                            <br>
+                            Contact: +8801724932306
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
 
   

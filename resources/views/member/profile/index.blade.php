@@ -13,27 +13,42 @@
    </div>
 @endif 
 
-
-<div class="row">
-    <div class="col-md-4"></div>
-<div class="col-md-4">
-    <div class="card">
-        <div class="card-body">
-          <h3 class="card-title">Profile Info</h3>
-          <hr>
-        <p>Name: <strong>{{ $user->name }}</strong></p>
-        <p>Email: <strong>{{ $user->email }}</strong></p>
-        <p>Contact: <strong>{{ $user->contact }}</strong></p>
-        <p>Age: <strong>{{ $user->age }}</strong></p>
-        <a href="{{ route('member.profile.edit') }}" class="btn btn-success">Edit</a>
-        <a href="{{ URL::previous()  }}" class="btn btn-danger">Back</a>
+<div class="row justify-content-center">
+  <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+              <strong>Profile Info</strong>
+          </div>
+          <div class="card-body">
+            <table class="table table-striped  table-hover">
+              <tr>
+                <th>Name: </th>
+                <td>{{ $user->name }}</td>
+              </tr>
+              <tr>
+                <th>Email: </th>
+                <td>{{ $user->email }}</td>
+              </tr>
+              <tr>
+                <th>Contact: </th>
+                <td>{{ $user->contact }}</td>
+              </tr>
+              <tr>
+                <th>Age: </th>
+                <td>{{ $user->age }}</td>
+              </tr>
+            </table>
+          </div>
+          <div class="card-footer">
+            <a href="{{ route('admin.profile.edit') }}" class="btn btn-success">Edit</a>
+            <a href="{{ URL::previous()  }}" class="btn btn-danger">Back</a>
+          </div>
         </div>
-      </div>
+  </div>
 </div>
-<div class="col-md-4"></div>
 
 
-</div>
+
 
 @endsection
 

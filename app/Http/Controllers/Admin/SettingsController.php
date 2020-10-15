@@ -24,7 +24,7 @@ class SettingsController extends Controller
         $this->validate($request,[
             'name' => ['required', 'string', 'max:255'],
             'age' => ['required', 'numeric'],
-            'contact' => ['required', 'numeric'],
+            'contact' => 'required|numeric|unique:users,contact,'. Auth::id(),
         ]);
         $user = Auth::user();
         $user->name = $request->name;

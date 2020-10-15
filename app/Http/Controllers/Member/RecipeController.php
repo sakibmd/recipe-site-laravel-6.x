@@ -101,7 +101,7 @@ class RecipeController extends Controller
             $recipe->user_id = Auth::id();
             $recipe->category_id = $request->categories;
             $recipe->save();
-            return redirect(route('member.recipe.index'))->with('success', 'Recipe Inserted Successfully');
+            return redirect(route('member.recipe.index'))->with('success', 'Recipe added Successfully to pending list, Please wait for admin approval');
     }
 
     /**
@@ -137,7 +137,7 @@ class RecipeController extends Controller
     public function update(Request $request, Recipe $recipe)
     {
         $this->validate($request,[
-            'title' => 'required|unique:recipes,title'. $recipe->id,
+            'title' => 'required|unique:recipes,title,'. $recipe->id,
             'body' => 'required',
             'categories' => 'required',
             'images.*' => 'mimes:jpeg,png,jpg',

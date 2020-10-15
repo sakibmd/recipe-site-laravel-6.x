@@ -16,15 +16,16 @@
         <div class="row">
          
            @forelse ($recipes as $item)
-           <div class="col-md-4">
+           <div class="col-md-4 float-left" >
             <div class="card">
                 <div class="card-body text-center">
                     <h4 class="card-title title text-center">{{ str_limit($item->title, 40) }}</h4>
+                    <p class="card-title">View: {{ $item->view_count }}</p>
                     <p class="card-text text-center pera">For Description</p>
                     <a href="{{ route('recipe.details', $item->slug) }}" class="button"  style="color: white;text-decoration: none; font-weight: bold;background: black;
                     padding:12px; ">Read More</a>
                 </div>
-                <img  src="{{ asset('storage/recipe/'. $item->image) }}" class="img-fluid" alt="Card image" style="padding: 0px 25px 25px 25px;">
+                <img  src="{{ asset('storage/featured/'. $item->featured_image) }}" class="img-fluid" alt="Card image" style="padding: 0px 25px 25px 25px;height: 250px;">
             </div>
            
           </div>

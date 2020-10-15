@@ -176,7 +176,7 @@ class RecipeController extends Controller
     public function update(Request $request, Recipe $recipe)
     {
         $this->validate($request,[
-            'title' => 'required|unique:recipes,title'. $recipe->id,
+            'title' => 'required|unique:recipes,title,'. $recipe->id,
             'body' => 'required',
             'categories' => 'required',
             'images.*' => 'mimes:jpeg,png,jpg',

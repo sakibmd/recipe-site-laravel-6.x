@@ -14,11 +14,9 @@
 <h2 style="text-align:center;font-weight: 700">Add New Recipe</h2>
 <br>
     <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-
-            </div>
-            <div class="col-md-6 card p-4">
+        <div class="row justify-content-center">
+            
+        <div class="col-md-12 card p-4 ">
 
                 @if ($errors->any())
                     <div class="alert alert-danger">
@@ -68,9 +66,7 @@
                     <a href="{{ route('member.recipe.index') }}" class="btn btn-danger">Back</a>
                 </form>
             </div>
-            <div class="col-md-3">
-
-            </div>
+            
         </div>
     </div>
 

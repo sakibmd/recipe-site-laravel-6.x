@@ -25,7 +25,7 @@
 
 @if ($recipes->count() > 0)
 <div class="table-responsive">
-    <table class="table table-dark">
+    <table class="table table-dark table-hover">
        <thead>
          <tr>
            <th scope="col">Id</th>

@@ -43,7 +43,7 @@
                     @endif
 
       
-        <div class="container cont">
+        <div class="container cont my-4">
             <div class="row gallery" style="margin-top: 130px;">
                 @foreach (json_decode($recipe->images) as $picture)
                            <div class="col-md-3">
@@ -55,13 +55,14 @@
            </div>
 
 
-            <div class="row">
-                <h2>Recipe Name: {{ $recipe->title }}</h2>
+            <div class="row my-4 mx-3">
+                <h2>{{ $recipe->title }}</h2>
             </div>
-            <div class="row">
-                <h4 class="mt-4">Cooking Process</h4>
+            <hr>
+            <div class="row mx-3">
+                <h4>Cooking Process</h4>
             </div>
-            <div class="row">
+            <div class="row my-4 mx-3">
                 <p>{{ $recipe->body }}</p>
             </div>
             <a href="{{ URL::previous() }}" class="btn btn-danger" >BACK</a>

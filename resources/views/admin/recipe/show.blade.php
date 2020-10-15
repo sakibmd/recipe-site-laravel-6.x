@@ -10,8 +10,14 @@
 
 @section('content')
 
-    <a href="{{ URL::previous() }}" class="btn btn-danger">Back</a>
-    <a href="{{ route('admin.recipe.edit', $recipe->id) }}" class="btn btn-info">Edit</a>
+    <div class="container">
+        <div class="row mx-3"> 
+            <a href="{{ URL::previous() }}" class="btn btn-danger mr-2">Back</a>
+            @if (Auth::id() == $recipe->user_id)
+                    <a href="{{ route('admin.recipe.edit', $recipe->id) }}" class="btn btn-info">Edit</a>
+            @endif
+        </div>
+    </div>
 
 
 
@@ -37,9 +43,6 @@
 
 
     <div class="container mt-4" >
-
-
-        
                 <div class="row gallery">
                      @foreach (json_decode($recipe->images) as $picture)
                                 <div class="col-md-3">
@@ -49,9 +52,6 @@
                                 </div>
                      @endforeach
                 </div>
-
-
-
 
         {{-- @foreach (json_decode($recipe->images) as $picture)
                 <img  src="{{ asset('images/'.$picture) }}" style="height: 100px;width: 150px" class="m-3">

@@ -4,10 +4,10 @@
     
 @section('content')
 <div class="container" style="margin-top:160px;">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center my-5">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Membership Registration Form') }}</div>
+                <div class="card-header"><strong>{{ __('Membership Registration Form') }}</strong></div>
 
                 <div class="card-body" style="padding: 15px;">
                     <form method="POST" action="{{ route('register') }}">
