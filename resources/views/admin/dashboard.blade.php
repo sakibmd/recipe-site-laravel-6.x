@@ -44,7 +44,7 @@
     </div>
     <div class="row text-center boxs">
         <div class="col-md-3 ">
-                <i class="icon material-icons" >apps</i>
+                <i class="icon material-icons" >dashboard</i>
                 <h3 class="number">Categories</h3>
                 <h3 class="number">{{ $categories->count() }}</h3>
         </div>
@@ -52,12 +52,22 @@
             <i class="icon material-icons" >outdoor_grill</i>
             <h3 class="number">Recipes</h3>
             <h3 class="number">{{ $recipes->count() }}</h3>
-    </div>
-    <div class="col-md-3">
-        <i class="icon material-icons" >account_circle</i>
-        <h3 class="number">Members</h3>
-        <h3 class="number">{{ $members->count() }}</h3>
-    </div>
+        </div>
+        <div class="col-md-3">
+            <i class="icon material-icons" >library_books</i>
+            <h3 class="number">Pending Recipes</h3>
+            <h3 class="number">{{ $pendingRecipes->count() }}</h3>
+        </div>
+        <div class="col-md-3">
+            <i class="icon material-icons" >account_circle</i>
+            <h3 class="number">Members</h3>
+            <h3 class="number">{{ $members->count() }}</h3>
+        </div>
+        <div class="col-md-3">
+            <i class="icon material-icons" >subscriptions</i>
+            <h3 class="number">Subscribers</h3>
+            <h3 class="number">{{ $subscribers->count() }}</h3>
+        </div>
     </div>
 </div>
 @endsection

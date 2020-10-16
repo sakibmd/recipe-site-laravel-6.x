@@ -17,4 +17,9 @@ class DashboardController extends Controller
         $members = User::latest()->where('role_id', '=', 2 )->get();
         return view('member.dashboard', compact('categories', 'recipes', 'members'));
     }
+
+    public function categories(){
+        $categories = Category::latest()->paginate(12);
+        return view('member.showCategories', compact('categories'));
+    }
 }

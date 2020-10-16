@@ -62,6 +62,7 @@ Route::group([
     ]
 ], function () {
     Route::get('dashboard','DashboardController@index')->name('dashboard');
+    Route::get('categories','DashboardController@categories')->name('categories');
     Route::resource('recipe','RecipeController');
     Route::get('pending/recipe','RecipeController@pending')->name('recipe.pending');
     

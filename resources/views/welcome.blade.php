@@ -45,7 +45,7 @@
 
        <section id="recipe">
            <div class="container text-center">
-            <h1 class="upper-title text-center">Amazing Recipes</h1>
+            <h1 class="upper-title text-center">See Our Latest Recipes</h1>
                <div class="row">
                 <div class="col-sm-8 col-md-9 mb-3">
                 @forelse ($recipes as $item)
@@ -122,7 +122,7 @@
                                  <input type="email" name="email" placeholder="enter email" class="form-control">
                              </div>
                              <div class="form-group">
-                                 <button type="submit" class="btn btn-success">Subscribe</button>
+                                 <button type="submit" class="btn btn-danger ml-2">Subscribe</button>
                              </div>
                         </div>
                         
@@ -185,7 +185,7 @@
                         <p class="my-4"><h2 class="name">Sharif Ahmed</h2></p>
                         <p><small>Website Founder</small></p>
                         <p class="mb-3 lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                        <p>Email: Email: sharif@metrouni.edu.bd 
+                        <p>Email: sharif@metrouni.edu.bd 
                             <br>
                             Contact: +8801724932306
                         </p>

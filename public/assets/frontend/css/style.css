@@ -4,7 +4,7 @@
 
 
 #nav-bar .navbar{
-  background: linear-gradient(to left bottom, #987beb, #8473db, #716acb, #5e62bb, #4d59aa);
+  background: #13101C;
 }
 #nav-bar .navbar .navbar-brand{
   color: #fff;
@@ -135,7 +135,7 @@
 /* footer */
 #footer{
     padding-top: 75px; 
-    background: linear-gradient(to left bottom, #987beb, #8473db, #716acb, #5e62bb, #4d59aa);
+    background: #13101C;
   }
 #footer .head{
     padding-bottom: 20px;
@@ -184,7 +184,7 @@
 /* subscribe */
 
 #subscribe{
-  background-color: rgb(226, 152, 14);
+  background-color: rgb(9, 129, 194);
   color: rgb(238, 238, 238);
   padding: 60px 80px;
   margin-top: 40px;

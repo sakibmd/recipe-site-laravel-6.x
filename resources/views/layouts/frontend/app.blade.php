@@ -36,8 +36,9 @@
 
 
   <!-- Scripts -->
-  <script src="{{ asset('assets/frontend/js/bootstrap.min.js') }}"></script>
   <script src="{{ asset('assets/frontend/js/jquery-1.12.4.min.js') }}"></script> 
+  <script src="{{ asset('assets/frontend/js/bootstrap.min.js') }}"></script>
+ 
     @yield('js')
 
 </body>

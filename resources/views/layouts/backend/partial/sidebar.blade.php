@@ -62,6 +62,11 @@
                        Dashboard
              </a>
 
+             <a class="{{ Request::is('member/categories') ? 'active' : '' }}"
+                href="{{ route('member.categories') }}">
+                Categories
+            </a>
+
              <a class="{{ Request::is('member/recipe*') ? 'active' : '' }}"
                 href="{{ route('member.recipe.index') }}">
                 Recipes

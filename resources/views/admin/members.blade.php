@@ -22,8 +22,8 @@
    </div>
 @endif 
 
-<div class="table-responsive">
- <table class="table table-dark  table-hover">
+<div class="table-responsive"> 
+ <table class="table table-dark  table-hover table-bordered">
     <thead>
       <tr>
         <th scope="col">Id</th>
@@ -39,9 +39,8 @@
             <tr>
                 <td>{{ $key+1 }}</td>
                 <td>{{ $member->name }}</td>
-                <td>{{ $member->created_at }}</td>
+                <td>{{ $member->created_at->diffforhumans() }}</td>
                 <td>{{ $member->contact }}</td>
-                <td>{{ $member->email }}</td>
                 <td>{{ $member->age }}</td>
                 <td>
                     <button class="btn btn-danger btn-block" type="button" onclick="deleteMember({{ $member->id }})">Delete</button>

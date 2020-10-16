@@ -39,7 +39,7 @@
     </div>
     <div class="row text-center boxs">
         <div class="col-md-3 ">
-                <i class="icon material-icons" >apps</i>
+                <i class="icon material-icons" >dashboard</i>
                 <h3 class="number">Total Categories</h3>
                 <h3 class="number">{{ $categories->count() }}</h3>
         </div>

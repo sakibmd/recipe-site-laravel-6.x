@@ -39,7 +39,7 @@
     </ul>
     @guest
     <form class="form-inline my-2 my-lg-0">
-      <a href="{{ route('register') }}" class="btn btn-dark my-2 px-4 py-2 " ><b>Register For Membership</b></a>
+      <a href="{{ route('register') }}" class="btn btn-primary my-2 px-4 py-2 " ><b>Register For Membership</b></a>
     </form>
     @endguest
     
