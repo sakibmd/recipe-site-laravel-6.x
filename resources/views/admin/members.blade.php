@@ -26,7 +26,6 @@
  <table class="table table-dark  table-hover table-bordered">
     <thead>
       <tr>
-        <th scope="col">Id</th>
         <th scope="col">Name</th>
         <th scope="col">Member Since</th>
         <th scope="col">Contact</th>
@@ -35,9 +34,8 @@
       </tr>
     </thead>
     <tbody>
-        @forelse ($members as $key => $member)
+        @forelse ($members as $member)
             <tr>
-                <td>{{ $key+1 }}</td>
                 <td>{{ $member->name }}</td>
                 <td>{{ $member->created_at->diffforhumans() }}</td>
                 <td>{{ $member->contact }}</td>

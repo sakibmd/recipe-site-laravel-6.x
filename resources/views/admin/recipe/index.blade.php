@@ -32,7 +32,6 @@
     <table class="table table-dark  table-hover">
        <thead>
          <tr>
-           <th scope="col">Id</th>
            <th scope="col">Title</th>
            <th scope="col">Body</th>
            <th scope="col">Category</th>
@@ -42,9 +41,8 @@
          </tr>
        </thead>
        <tbody>
-           @forelse ($recipes as $key => $recipe)
+           @forelse ($recipes as $recipe)
                <tr>
-                   <td>{{ $key+1 }}</td>
                    <td>{{  str_limit($recipe->title, 15)}}</td>
                    <td>{{ str_limit($recipe->body, 20) }}</td>
                    <td>{{ $recipe->category->name }}</td>

@@ -13,7 +13,7 @@ class DashboardController extends Controller
 {
     public function index(){
         $categories = Category::latest()->get();
-        $recipes = Recipe::latest()->get();
+        $recipes = Recipe::where('is_approved', 'yes')->latest()->get();
         $members = User::latest()->where('role_id', '=', 2 )->get();
         $subscribers = Subscriber::latest()->get();
         $pendingRecipes = Recipe::where('is_approved', 'no')->get();

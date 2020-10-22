@@ -13,7 +13,7 @@ class DashboardController extends Controller
 {
     public function index(){
         $categories = Category::latest()->get();
-        $recipes = Recipe::latest()->where('user_id', '=', Auth::id())->get();
+        $recipes = Recipe::latest()->where('is_approved', 'yes')->where('user_id', '=', Auth::id())->get();
         $members = User::latest()->where('role_id', '=', 2 )->get();
         return view('member.dashboard', compact('categories', 'recipes', 'members'));
     }

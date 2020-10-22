@@ -29,7 +29,6 @@
  <table class="table table-dark table-hover">
     <thead>
       <tr>
-        <th scope="col">Id</th>
         <th scope="col">Category Name</th>
         <th scope="col">Total Post</th>
         <th scope="col">Created At</th>
@@ -38,9 +37,8 @@
       </tr>
     </thead>
     <tbody>
-        @forelse ($categories as $key => $category)
+        @forelse ($categories as $category)
             <tr>
-                <td>{{ $key+1 }}</td>
                 <td>{{ $category->name }}</td>
                 <td>{{ $category->recipes->count() }}</td>
                 <td>{{ $category->created_at->diffForHumans() }}</td>

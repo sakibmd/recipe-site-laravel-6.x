@@ -27,7 +27,6 @@
     <table class="table table-dark  table-hover">
        <thead>
          <tr>
-           <th scope="col">Id</th>
            <th scope="col">Email</th>
            <th scope="col">Subscriber Since</th>
            <th colspan="3">Action</th>
@@ -36,7 +35,6 @@
        <tbody>
            @forelse ($subscribers as $key => $subscriber)
                <tr>
-                   <td>{{ $key+1 }}</td>
                    <td>{{ $subscriber->email }}</td>
                    <td>{{ $subscriber->created_at->diffForHumans() }}</td>
                
