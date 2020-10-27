@@ -27,13 +27,13 @@
 
 @if ($recipes->count() > 0)
 <div class="table-responsive">
-    <table class="table table-dark">
+    <table class="table table-dark text-center">
        <thead>
          <tr>
-           
            <th scope="col">Title</th>
            <th scope="col">Body</th>
            <th scope="col">Category</th>
+           <th scope="col">View Count</th>
            <th scope="col">Image</th>
            <th scope="col">Created At</th>
            <th scope="col">Show</th>
@@ -48,6 +48,7 @@
                    <td>{{  str_limit($recipe->title, 15)}}</td>
                    <td>{{ str_limit($recipe->body, 20) }}</td>
                    <td>{{ $recipe->category->name }}</td>
+                   <td>{{ $recipe->view_count }}</td>
                    <td><img style="height: 80px; width: 138px" src="{{ asset('storage/featured/'. $recipe->featured_image) }}" alt="image"></td>
                   
                    <td>{{ $recipe->created_at->diffForHumans() }}</td>

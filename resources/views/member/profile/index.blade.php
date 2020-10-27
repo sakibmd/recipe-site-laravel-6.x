@@ -40,7 +40,7 @@
             </table>
           </div>
           <div class="card-footer">
-            <a href="{{ route('admin.profile.edit') }}" class="btn btn-success">Edit</a>
+            <a href="{{ route('member.profile.edit') }}" class="btn btn-success">Edit</a>
             <a href="{{ URL::previous()  }}" class="btn btn-danger">Back</a>
           </div>
         </div>

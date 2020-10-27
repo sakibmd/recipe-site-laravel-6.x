@@ -23,7 +23,7 @@
 @endif 
 
 <div class="table-responsive"> 
- <table class="table table-dark  table-hover table-bordered">
+ <table class="table table-dark  table-hover table-bordered text-center" >
     <thead>
       <tr>
         <th scope="col">Name</th>
