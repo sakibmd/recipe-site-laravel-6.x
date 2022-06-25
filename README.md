@@ -1,29 +1,29 @@
 <h2>How To Configure</h2>
-- git clone https://github.com/sakibmd/recipe-site-laravel-6.x.git
-- composer i
-- php artisan generate:key
-- php artisan migrate
-- php artisan db:seed
-- npm i
+- git clone https://github.com/sakibmd/recipe-site-laravel-6.x.git <br>
+- composer i <br>
+- php artisan generate:key <br>
+- php artisan migrate <br>
+- php artisan db:seed <br>
+- npm i <br> <br>
 
-then change filename .env-example to .env
-- Add Database Name
-- Create Mailtrap Account (for use locally)
-- Configure mailtrap username & password for users email verification.
+then change filename .env-example to .env <br>
+- Add Database Name <br>
+- Create Mailtrap Account (for use locally) <br>
+- Configure mailtrap username & password for users email verification. <br><br>
 
-Here is an example:
-MAIL_MAILER=smtp
-MAIL_HOST=smtp.mailtrap.io
-MAIL_PORT=2525
-MAIL_USERNAME=your_username
-MAIL_PASSWORD=your_password
-MAIL_ENCRYPTION=tls
-MAIL_FROM_ADDRESS=demo@gmail.com
-MAIL_FROM_NAME="Demo Project"
+Here is an example: <br>
+MAIL_MAILER=smtp <br>
+MAIL_HOST=smtp.mailtrap.io<br>
+MAIL_PORT=2525 <br>
+MAIL_USERNAME=your_username <br>
+MAIL_PASSWORD=your_password <br>
+MAIL_ENCRYPTION=tls <br>
+MAIL_FROM_ADDRESS=demo@gmail.com <br>
+MAIL_FROM_NAME="Demo Project" <br><br>
 
-Then, 
-php artisan config:clear
-php artisan config:cache
-php artisan storage:link
-php artisan serve
+Then, <br>
+php artisan config:clear <br>
+php artisan config:cache <br>
+php artisan storage:link <br>
+php artisan serve <br>
 
