@@ -37,7 +37,7 @@
         @forelse ($members as $member)
             <tr>
                 <td>{{ $member->name }}</td>
-                <td>{{ $member->created_at->diffforhumans() }}</td>
+                <td>{{ \Carbon\Carbon::parse($member->created_at)->diffForHumans() }}</td>
                 <td>{{ $member->contact }}</td>
                 <td>{{ $member->age }}</td>
                 <td>
