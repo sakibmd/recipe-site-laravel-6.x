@@ -1,7 +1,7 @@
 <h2>How To Configure</h2>
 - git clone https://github.com/sakibmd/recipe-site-laravel-6.x.git <br>
 - composer i <br>
-- php artisan generate:key <br>
+- php artisan key:generate <br>
 - php artisan migrate <br>
 - php artisan db:seed <br>
 - npm i <br> <br>

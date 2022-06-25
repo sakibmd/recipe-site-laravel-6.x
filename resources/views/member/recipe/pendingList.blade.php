@@ -34,7 +34,7 @@
            <th scope="col">Image</th>
            <th scope="col">Created At</th>
            <th scope="col">Show</th>
-           <th scope="col">Edit</th>
+           <!-- <th scope="col">Edit</th> -->
            <th scope="col">Delete</th>
          </tr>
        </thead>
@@ -49,9 +49,9 @@
                    <td>{{ $recipe->created_at->diffForHumans() }}</td>
                
                    <td><a href="{{ route('member.recipe.show', $recipe->id) }}" class="btn btn-success btn-block">Details</a></td>
-                   <td>
+                   <!-- <td>
                        <a href="{{ route('member.recipe.edit', $recipe->id) }}" class="btn btn-info btn-block">Edit</a>
-                   </td>
+                   </td> -->
                    <td>
                        <button class="btn btn-danger btn-block" type="button" onclick="deleteRecipe({{ $recipe->id }})">Delete</button>
                              

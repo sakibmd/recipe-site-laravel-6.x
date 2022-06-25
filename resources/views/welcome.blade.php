@@ -79,7 +79,7 @@
                         @endforeach
                       </div>
                 </div>
-                @if ($recipes->count() > 0)
+                @if ($recipes->count() > 4)
                      <a href="{{ route('recipe.allRecipe') }}" class="btn btn-default m-auto see-more">See More</a>
                 @endif
                </div>

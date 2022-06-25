@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     public function recipes(){
-        return $this->hasMany('App\Recipe');
+        return $this->hasMany('App\Recipe')->where('is_approved','=', 'yes');
     }
 }
